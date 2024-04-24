@@ -338,8 +338,8 @@ function verifyCategories(){
     let category = document.body.querySelector('.vtex-breadcrumb-1-x-container');
     if(!category) requestAnimationFrame(verifyCategories);
 
-    categoryFantasia        = category.children[2];
-    subCategoryFantasia     = category.children[4];
+    categoryFantasia        = document.body.querySelector('.vtex-breadcrumb-1-x-container').children[2];
+    subCategoryFantasia     = document.body.querySelector('.vtex-breadcrumb-1-x-container').children[4];
 };
 
 function initExperienceMudi(){
