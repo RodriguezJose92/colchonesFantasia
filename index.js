@@ -20,7 +20,7 @@ class MudiExperience{
             request = await fetch('https://mudiview.mudi.com.co:7443/product/getProductsUrl',{
                 method:'POST',
                 headers:{   "Content-type":"application/json",
-                            "tokenapi":"GjSAn4bGJZzU4cZnZP5q"
+                            "tokenapi":"ffNnBMPBhfZ6GQnr8Fr8"
                 },
                 body: JSON.stringify(myBody)
             })
@@ -318,3 +318,37 @@ class MudiExperience{
 };
 
 const mudiExperience = new MudiExperience();
+
+/** Variables */
+let 
+fatherContainer     = null,
+skuFantasia         = new URLSearchParams(window.location.search).get('skuId'),
+categoryFantasia    = null,
+subCategoryFantasia = null;
+
+
+/** Verify Father Container */
+function verifyFatherBox(){
+    let fatherBox = document.body.querySelector('.tex-store-components-3-x-productImagesGallerySwiperContainer')
+    !fatherBox && requestAnimationFrame(verifyFatherBox);
+    fatherContainer = fatherBox;
+};
+
+function verifyCategories(){
+    let category = document.body.querySelector('.vtex-breadcrumb-1-x-container');
+    if(!category) requestAnimationFrame(verifyCategories);
+
+    categoryFantasia        = category.children[2];
+    subCategoryFantasia     = category.children[4];
+};
+
+function initExperienceMudi(){
+    if(!fatherContainer || !categoryFantasia || !subCategoryFantasia){
+        requestAnimationFrame(initExperienceMudi)
+    }
+    mudiExperience.experienceOn(skuFantasia, fatherContainer)
+};
+
+verifyFatherBox()
+verifyCategories()
+initExperienceMudi()
