@@ -347,6 +347,7 @@ function initExperienceMudi(){
         requestAnimationFrame(initExperienceMudi)
     }
     mudiExperience.experienceOn(skuFantasia, fatherContainer)
+    window.mudiExperience = mudiExperience;
 };
 
 verifyFatherBox()
