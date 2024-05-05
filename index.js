@@ -359,7 +359,11 @@ function verifySkuNumer(){
 }
 
 function initExperienceMudi(){
-    if( fatherContainer && categoryFantasia && subCategoryFantasia){ mudiExperience.experienceOn(skuFantasia, fatherContainer) }
+    if( fatherContainer && categoryFantasia && subCategoryFantasia){ 
+        setTimeout(()=>{
+            mudiExperience.experienceOn(skuFantasia, fatherContainer) 
+        },2000) 
+    }
     else{ requestAnimationFrame(initExperienceMudi)}
 };
 
