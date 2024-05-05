@@ -362,8 +362,27 @@ function initExperienceMudi(){
     else{ requestAnimationFrame(initExperienceMudi) };
 };
 
+let _location = window.location.href;
+function verifyURL(){
+    
+    if( _location !== window.location.href ){
+        _location = window.location.href;
+        setTimeout(()=>{
+            verifySkuNumer();
+            mudiExperience.experienceOn(skuFantasia, fatherContainer);
+            console.log('cambiando')
+            console.log(skuFantasia, fatherContainer)
+        },2000);
+        requestAnimationFrame(verifyURL);
+        
+    }else{
+        requestAnimationFrame(verifyURL);
+    }
+}
+
 verifyFatherBox();
 verifySkuNumer();
 verifyCategories();
 initExperienceMudi();
+verifyURL();
 window.mudiExperience = mudiExperience;
