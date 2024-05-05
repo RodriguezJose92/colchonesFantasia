@@ -1,7 +1,7 @@
 class MudiExperience{
 
     constructor(){
-        this.color              = "#03457c";
+        this.color              = "#2e3192";
         this.dataSever          = null;
         this.skuNumber          = null;
         this.fatherContainer    = null;
@@ -372,7 +372,7 @@ function verifyURL(){
             mudiExperience.experienceOn(skuFantasia, fatherContainer);
             console.log('cambiando')
             console.log(skuFantasia, fatherContainer)
-        },2000);
+        },4000);
         requestAnimationFrame(verifyURL);
         
     }else{
