@@ -356,6 +356,7 @@ function verifySkuNumer(){
 
     const skuNumberToReturn = (text1 + text2).replace(/\s/g, '');
     skuFantasia = skuNumberToReturn
+    console.log(skuFantasia)
 }
 
 function initExperienceMudi(){
