@@ -326,14 +326,9 @@ skuFantasia         = undefined,
 categoryFantasia    = undefined,
 subCategoryFantasia = undefined;
 
-
-
-
-
-
 /** Verify Father Container */
 function verifyFatherBox(){
-    let fatherBox = document.body.querySelector('.vtex-store-components-3-x-productImagesGallerySwiperContainer');
+    let fatherBox = document.body.querySelector('.vtex-store-components-3-x-productImagesContainer');
     if(!fatherBox) { requestAnimationFrame(verifyFatherBox); return };
     fatherContainer = fatherBox;
 };
@@ -353,7 +348,7 @@ function verifySkuNumer(){
 
     let text1 = skuNumber[0].innerText.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     let text2 = skuNumber[1].innerText.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
+ 
     const skuNumberToReturn = (text1 + text2).replace(/\s/g, '');
     skuFantasia = skuNumberToReturn
 }
@@ -361,10 +356,10 @@ function verifySkuNumer(){
 function initExperienceMudi(){
     if( fatherContainer && categoryFantasia && subCategoryFantasia){ 
         setTimeout(()=>{
-            mudiExperience.experienceOn(skuFantasia, fatherContainer) 
-        },2000) 
+            mudiExperience.experienceOn(skuFantasia, fatherContainer);
+        },2000);
     }
-    else{ requestAnimationFrame(initExperienceMudi)}
+    else{ requestAnimationFrame(initExperienceMudi) };
 };
 
 verifyFatherBox();
