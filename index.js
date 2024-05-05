@@ -322,9 +322,13 @@ const mudiExperience = new MudiExperience();
 /** Variables */
 let 
 fatherContainer     = null,
-skuFantasia         = new URLSearchParams(window.location.search).get('skuId'),
+skuFantasia         = null,
 categoryFantasia    = null,
 subCategoryFantasia = null;
+
+
+
+
 
 
 /** Verify Father Container */
@@ -342,15 +346,25 @@ function verifyCategories(){
     subCategoryFantasia     = document.body.querySelector('.vtex-breadcrumb-1-x-container').children[4];
 };
 
+function verifySkuNumer(){
+    let skuNumber = document.body.querySelectorAll('.vtex-store-components-3-x-productBrand');
+
+    if( !skuNumber ){ requestAnimationFrame(verifySkuNumer)}
+
+    let text1 = skuNumber[0].innerText.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+    let text2 = skuNumber[1].innerText.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+
+    const skuNumberToReturn = (text1 + text2).replace(/\s/g, '');
+    skuFantasia = skuNumberToReturn
+}
+
 function initExperienceMudi(){
-    if(!fatherContainer || !categoryFantasia || !subCategoryFantasia){
-        requestAnimationFrame(initExperienceMudi)
-    }
-    mudiExperience.experienceOn(skuFantasia, fatherContainer)
-   
+    if( fatherContainer && categoryFantasia && subCategoryFantasia){ mudiExperience.experienceOn(skuFantasia, fatherContainer) }
+    else{ requestAnimationFrame(initExperienceMudi) }
 };
 
 verifyFatherBox()
+verifySkuNumer()
 verifyCategories()
 initExperienceMudi()
- window.mudiExperience = mudiExperience;
+window.mudiExperience = mudiExperience;
