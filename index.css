@@ -194,9 +194,7 @@
     margin-bottom: 20px
 }
 
-.vtex-wish-list-1-x-wishlistIconContainer {
-    left: 0 !important;
-}
+
 
 @media screen and (min-width:1400px) and (max-width:1700px) {
     .containerQRMudi {
@@ -269,6 +267,10 @@
         border-bottom-right-radius: 50px;
         background-color: #2e3192;
         color: transparent;
+    }
+
+    .vtex-wish-list-1-x-wishlistIconContainer {
+        transform: translateX(-76vw)
     }
 
 
