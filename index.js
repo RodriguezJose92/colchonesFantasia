@@ -321,10 +321,10 @@ const mudiExperience = new MudiExperience();
 
 /** Variables */
 let 
-fatherContainer     = null,
-skuFantasia         = null,
-categoryFantasia    = null,
-subCategoryFantasia = null;
+fatherContainer     = undefined,
+skuFantasia         = undefined,
+categoryFantasia    = undefined,
+subCategoryFantasia = undefined;
 
 
 
@@ -333,14 +333,14 @@ subCategoryFantasia = null;
 
 /** Verify Father Container */
 function verifyFatherBox(){
-    let fatherBox = document.body.querySelector('.tex-store-components-3-x-productImagesGallerySwiperContainer')
-    !fatherBox && requestAnimationFrame(verifyFatherBox);
+    let fatherBox = document.body.querySelector('.vtex-store-components-3-x-productImagesGallerySwiperContainer');
+    if(!fatherBox) { requestAnimationFrame(verifyFatherBox); return };
     fatherContainer = fatherBox;
 };
 
 function verifyCategories(){
     let category = document.body.querySelector('.vtex-breadcrumb-1-x-container');
-    if(!category) requestAnimationFrame(verifyCategories);
+    if(!category) {requestAnimationFrame(verifyCategories); return }
 
     categoryFantasia        = document.body.querySelector('.vtex-breadcrumb-1-x-container').children[2];
     subCategoryFantasia     = document.body.querySelector('.vtex-breadcrumb-1-x-container').children[4];
@@ -349,23 +349,22 @@ function verifyCategories(){
 function verifySkuNumer(){
     let skuNumber = document.body.querySelectorAll('.vtex-store-components-3-x-productBrand');
 
-    if( !skuNumber ){ requestAnimationFrame(verifySkuNumer)}
+    if( skuNumber.length == 0 ){ requestAnimationFrame(verifySkuNumer); return}
 
     let text1 = skuNumber[0].innerText.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
     let text2 = skuNumber[1].innerText.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
     const skuNumberToReturn = (text1 + text2).replace(/\s/g, '');
     skuFantasia = skuNumberToReturn
-    console.log(skuFantasia)
 }
 
 function initExperienceMudi(){
     if( fatherContainer && categoryFantasia && subCategoryFantasia){ mudiExperience.experienceOn(skuFantasia, fatherContainer) }
-    else{ requestAnimationFrame(initExperienceMudi) }
+    else{ requestAnimationFrame(initExperienceMudi)}
 };
 
-verifyFatherBox()
-verifySkuNumer()
-verifyCategories()
-initExperienceMudi()
+verifyFatherBox();
+verifySkuNumer();
+verifyCategories();
+initExperienceMudi();
 window.mudiExperience = mudiExperience;
