@@ -307,11 +307,14 @@ class MudiExperience{
             subCategory: document.body.querySelector('.breadcrumb li:nth-of-type(3) a').innerHTML || ' null'
         });  
 
+        flag && (
         setTimeout(()=>{
             document.body.querySelector('.cart-add').addEventListener('click',()=>{
                 this.sendEventInteraction('ADD TO CAR');
             })
-        },2000)
+        },2000),
+        document.body.querySelector('.vtex-wish-list-1-x-wishlistIconContainer').style.left=`0 !important`
+        )
 
     };
 

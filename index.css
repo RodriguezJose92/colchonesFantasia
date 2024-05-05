@@ -9,7 +9,7 @@
     width: max-content;
     height: max-content;
     right: 0%;
-    top: 10%;
+    top: 5%;
     z-index: 10;
 }
 
@@ -246,7 +246,7 @@
     }
 
     .tooltipMudi {
-        background-color: #03457c;
+        background-color: #2e3192;
         color: white;
         font-family: sans-serif;
         width: 330px;
@@ -267,7 +267,7 @@
         right: 6%;
         width: 10px;
         border-bottom-right-radius: 50px;
-        background-color: #03457c;
+        background-color: #2e3192;
         color: transparent;
     }
 
