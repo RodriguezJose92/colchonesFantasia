@@ -78,7 +78,7 @@ class MudiExperience{
                             fill:#f4f4f4;
                         }
                         .cls-3{
-                            fill:${this.color};
+                            fill:#2e3192;
                         }
                     </style>
                 </defs>
