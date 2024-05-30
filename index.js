@@ -265,8 +265,8 @@ class MudiExperience{
             event: `Evento de interaccion ${eventName}`,
             valorMudi: 1,
             sku: this.skuNumber,
-            category:document.body.querySelector('.breadcrumb li:nth-of-type(2) a').innerHTML || 'null',
-            subCategory: document.body.querySelector('.breadcrumb li:nth-of-type(3) a').innerHTML || ' null',
+            category: document.body.querySelector('[data-testid="breadcrumb"]').children[1].innerText || 'null',
+            subCategory: document.body.querySelector('[data-testid="breadcrumb"]').children[2].innerText || ' null',
             sistemaOperativo: OSdevice
         })
     };
@@ -303,17 +303,17 @@ class MudiExperience{
             event: "visualizacion_botones",
             valorMudi: "1",
             sku: this.skuNumber,
-            category: document.body.querySelector('.breadcrumb li:nth-of-type(2) a').innerHTML || 'null',
-            subCategory: document.body.querySelector('.breadcrumb li:nth-of-type(3) a').innerHTML || ' null'
+            category: document.body.querySelector('[data-testid="breadcrumb"]').children[1].innerText || 'null',
+            subCategory: document.body.querySelector('[data-testid="breadcrumb"]').children[2].innerText || ' null'
         });  
 
         flag && (
-        setTimeout(()=>{
-            document.body.querySelector('.cart-add').addEventListener('click',()=>{
-                this.sendEventInteraction('ADD TO CAR');
-            })
-        },2000),
-        document.body.querySelector('.vtex-wish-list-1-x-wishlistIconContainer').style.left=`0 !important`
+            setTimeout(()=>{
+                document.body.querySelector('.vtex-add-to-cart-button-0-x-buttonText').parentNode.parentNode.parentNode.addEventListener('click',()=>{
+                    this.sendEventInteraction('ADD TO CAR');
+                })
+            },2000),
+            document.body.querySelector('.vtex-wish-list-1-x-wishlistIconContainer').style.left=`0 !important`
         )
 
     };
