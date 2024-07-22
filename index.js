@@ -372,7 +372,7 @@ function verifyURL(){
         _location = window.location.href;
         setTimeout(()=>{
             verifySkuNumer();
-            mudiExperience.experienceOn(skuFantasia, fatherContainer);
+            mudiExperience.experienceOn(skuFantasia,  document.body.querySelector('.vtex-store-components-3-x-productImagesContainer') );
             console.log('cambiando')
             console.log(skuFantasia, fatherContainer)
         },4000);
